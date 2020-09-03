@@ -21,6 +21,6 @@ mybatis:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     #配置懒加载优先级  fetchType="lazy" > lazy-loading-enabled
-    lazy-loading-enabled: false  #开启懒加载
+    lazy-loading-enabled: true  #延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 特定关联关系中可通过设置 fetchType 属性来覆盖该项的开关状态。
     aggressive-lazy-loading: false #开启时，任一方法的调用都会加载该对象的所有延迟加载属性。 否则，每个延迟加载属性会按需加载（参考 lazyLoadTriggerMethods)。	true | false	false （在 3.4.1 及之前的版本中默认为 true）
   mapper-locations: classpath:mapper/*.xml
