@@ -5,8 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import perseverance.li.mybatis.bean.DeptBean;
 import perseverance.li.mybatis.bean.EmpBean;
 import perseverance.li.mybatis.dao.MybatisCUDDao;
+import perseverance.li.mybatis.dao.MybatisSelectDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,8 @@ class MybatisSummarizeApplicationTests {
 
     @Autowired
     private MybatisCUDDao cudDao;
+    @Autowired
+    private MybatisSelectDao selectDao;
 
     @Test
     void insertSingleEmp() {
@@ -49,14 +53,14 @@ class MybatisSummarizeApplicationTests {
 
     @Test
     void deleteEmp() {
-        Integer delLine = cudDao.deleteEmp(1);
+        Integer delLine = cudDao.deleteEmp(2);
         logger.info("del line : " + delLine);
     }
 
     @Test
     void updateEmp() {
         EmpBean empBean = new EmpBean();
-        empBean.setId(2);
+        empBean.setEmpId(3);
         empBean.setName("李飞飞");
         empBean.setAge(26);
         empBean.setIdCard("439019933990909183");
@@ -65,4 +69,40 @@ class MybatisSummarizeApplicationTests {
         logger.info("update line : " + updateLine);
     }
 
+    @Test
+    void selectAllEmp() {
+        List<EmpBean> beanList = selectDao.selectAllEmp();
+        logger.info(beanList.toString());
+    }
+
+    @Test
+    void selectAllEmp2() {
+        List<EmpBean> beanList = selectDao.selectAllEmp2();
+        logger.info(beanList.toString());
+    }
+
+    @Test
+    void selectAllDept() {
+        List<DeptBean> deptBeans = selectDao.selectAllDept();
+        logger.info(deptBeans.toString());
+    }
+
+    @Test
+    void selectAllDept2() {
+        List<DeptBean> deptBeans = selectDao.selectAllDept2();
+        logger.info(deptBeans.toString());
+    }
+
+
+    @Test
+    void selectEmpByDeptNo() {
+        List<EmpBean> beanList = selectDao.selectEmpByDeptNo(1001);
+        logger.info(beanList.toString());
+    }
+
+    @Test
+    void selectDeptByDeptNo() {
+        DeptBean deptBean = selectDao.selectDeptByDeptNo(1002);
+        logger.info(deptBean.toString());
+    }
 }

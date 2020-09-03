@@ -3,4 +3,87 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="perseverance.li.mybatis.dao.MybatisSelectDao">
+
+    <resultMap id="emp_map" type="perseverance.li.mybatis.bean.EmpBean">
+        <id column="emp_id" property="empId"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="id_card" property="idCard"/>
+        <result column="dept_no" property="deptNo"/>
+        <association property="deptBean" javaType="perseverance.li.mybatis.bean.DeptBean">
+            <id column="dept_id" property="deptId"/>
+            <result column="dept_no" property="deptNo"/>
+            <result column="dept_name" property="deptName"/>
+        </association>
+    </resultMap>
+
+    <!-- 使用sql关联查询 -->
+    <select id="selectAllEmp" resultMap="emp_map">
+        select * from emp left join dept on emp.dept_no = dept.dept_no
+    </select>
+
+    <!-- 使用sql关联查询 -->
+    <resultMap id="dept_map" type="perseverance.li.mybatis.bean.DeptBean">
+        <id column="dept_id" property="deptId"/>
+        <result column="dept_no" property="deptNo"/>
+        <result column="dept_name" property="deptName"/>
+        <collection property="empBeanList" ofType="perseverance.li.mybatis.bean.EmpBean">
+            <id column="emp_id" property="empId"/>
+            <result column="name" property="name"/>
+            <result column="age" property="age"/>
+            <result column="id_card" property="idCard"/>
+            <result column="dept_no" property="deptNo"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectAllDept" resultMap="dept_map">
+        select * from dept left outer join emp on dept.dept_no = emp.dept_no
+    </select>
+
+    <!-- **************************************************************************************************************** -->
+
+    <select id="selectEmpByDeptNo" resultType="perseverance.li.mybatis.bean.EmpBean">
+        select * from emp where dept_no=#{deptNo}
+    </select>
+
+    <select id="selectDeptByDeptNo" resultType="perseverance.li.mybatis.bean.DeptBean">
+        select * from dept where dept_no=#{deptNo}
+    </select>
+
+    <!-- 单条sql查询 -->
+    <resultMap id="emp_map_2" type="perseverance.li.mybatis.bean.EmpBean">
+        <id column="emp_id" property="empId"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="id_card" property="idCard"/>
+        <result column="dept_no" property="deptNo"/>
+        <association property="deptBean"
+                     javaType="perseverance.li.mybatis.bean.DeptBean"
+                     select="perseverance.li.mybatis.dao.MybatisSelectDao.selectDeptByDeptNo"
+                     column="dept_no"
+        />
+    </resultMap>
+
+    <!-- 先查全部，在单条查询 -->
+    <select id="selectAllEmp2" resultMap="emp_map_2">
+        select * from emp
+    </select>
+
+    <!-- 单条sql查询 -->
+    <resultMap id="dept_map_2" type="perseverance.li.mybatis.bean.DeptBean">
+        <id column="dept_id" property="deptId"/>
+        <result column="dept_no" property="deptNo"/>
+        <result column="dept_name" property="deptName"/>
+        <collection property="empBeanList"
+                    ofType="perseverance.li.mybatis.bean.EmpBean"
+                    select="perseverance.li.mybatis.dao.MybatisSelectDao.selectEmpByDeptNo"
+                    column="dept_no"
+        />
+    </resultMap>
+
+    <!-- 先查全部，在单条查询 -->
+    <select id="selectAllDept2" resultMap="dept_map_2">
+        select * from dept
+    </select>
+
 </mapper>

@@ -15,18 +15,19 @@ package perseverance.li.mybatis.bean;
  */
 public class EmpBean {
 
-    private Integer id;
+    private Integer empId;
     private String name;
     private Integer age;
     private String idCard;
     private Integer deptNo;
+    private DeptBean deptBean;
 
-    public Integer getId() {
-        return id;
+    public Integer getEmpId() {
+        return empId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
     }
 
     public String getName() {
@@ -61,14 +62,23 @@ public class EmpBean {
         this.deptNo = deptNo;
     }
 
+    public DeptBean getDeptBean() {
+        return deptBean;
+    }
+
+    public void setDeptBean(DeptBean deptBean) {
+        this.deptBean = deptBean;
+    }
+
     @Override
     public String toString() {
         return "EmpBean{" +
-                "id=" + id +
+                "empId=" + empId +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", idCard='" + idCard + '\'' +
                 ", deptNo=" + deptNo +
+                ", deptBean=" + deptBean +
                 '}';
     }
 }

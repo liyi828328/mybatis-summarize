@@ -5,12 +5,12 @@
 <mapper namespace="perseverance.li.mybatis.dao.MybatisCUDDao">
 
     <!-- 单条插入 -->
-    <insert id="insertSingleEmp" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertSingleEmp" useGeneratedKeys="true" keyProperty="empId">
         insert into emp (name,age,id_card,dept_no) values (#{name},#{age},#{idCard},#{deptNo})
     </insert>
 
     <!-- 批量插入 -->
-    <insert id="insertListEmp" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertListEmp" useGeneratedKeys="true" keyProperty="empId">
         insert into emp (name,age,id_card,dept_no)
         values
         <foreach collection="empBeanList" item="emp" separator=",">
@@ -25,11 +25,11 @@
             age = #{age},
             id_card = #{idCard},
             dept_no = #{deptNo}
-        where id = #{id}
+        where emp_id = #{empId}
     </update>
 
     <!-- delete -->
     <delete id="deleteEmp">
-        delete from emp where id = #{id}
+        delete from emp where emp_id = #{empId}
     </delete>
 </mapper>

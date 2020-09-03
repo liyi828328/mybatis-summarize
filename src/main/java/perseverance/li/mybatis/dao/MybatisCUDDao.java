@@ -44,10 +44,10 @@ public interface MybatisCUDDao {
     /**
      * 删除
      *
-     * @param id
+     * @param empId
      * @return
      */
-    Integer deleteEmp(Integer id);
+    Integer deleteEmp(Integer empId);
 
     /**
      * 更新
