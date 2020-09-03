@@ -105,4 +105,11 @@ class MybatisSummarizeApplicationTests {
         DeptBean deptBean = selectDao.selectDeptByDeptNo(1002);
         logger.info(deptBean.toString());
     }
+
+    @Test
+    void selectEmpById(){
+        EmpBean empBean = selectDao.selectEmpById(3);
+        logger.info(empBean.getName());
+//        logger.info(empBean.getDeptBean().getDeptName());
+    }
 }

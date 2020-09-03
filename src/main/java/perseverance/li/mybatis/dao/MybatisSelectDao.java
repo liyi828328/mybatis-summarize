@@ -32,6 +32,14 @@ public interface MybatisSelectDao {
     List<EmpBean> selectAllEmp();
 
     /**
+     * 根据id查询emp
+     *
+     * @param empId
+     * @return
+     */
+    EmpBean selectEmpById(Integer empId);
+
+    /**
      * 查询全部使用单条sql方式
      *
      * @return

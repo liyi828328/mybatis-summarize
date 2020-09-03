@@ -86,4 +86,8 @@
         select * from dept
     </select>
 
+    <!-- ************************************************************************************************************* -->
+    <select id="selectEmpById" resultMap="emp_map_2">
+        select * from emp where emp_id = #{empId}
+    </select>
 </mapper>
