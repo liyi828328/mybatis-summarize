@@ -31,7 +31,7 @@ public interface MybatisCUDDao {
      * @param empBean
      * @return
      */
-    Integer insertSingleEmp(EmpBean empBean);
+    int insertSingleEmp(EmpBean empBean);
 
     /**
      * 批量插入emp数据
@@ -39,7 +39,7 @@ public interface MybatisCUDDao {
      * @param empBeanList
      * @return
      */
-    Integer insertListEmp(List<EmpBean> empBeanList);
+    int insertListEmp(List<EmpBean> empBeanList);
 
     /**
      * 删除
@@ -47,7 +47,7 @@ public interface MybatisCUDDao {
      * @param empId
      * @return
      */
-    Integer deleteEmp(Integer empId);
+    int deleteEmp(Integer empId);
 
     /**
      * 更新
@@ -55,5 +55,5 @@ public interface MybatisCUDDao {
      * @param emp
      * @return
      */
-    Integer updateEmp(EmpBean emp);
+    int updateEmp(EmpBean emp);
 }

@@ -30,7 +30,7 @@ class MybatisSummarizeApplicationTests {
         emp.setAge(24);
         emp.setIdCard("131028198909831492");
         emp.setDeptNo(1001);
-        Integer insertLine = cudDao.insertSingleEmp(emp);
+        int insertLine = cudDao.insertSingleEmp(emp);
         logger.info("insert line : " + insertLine);
         logger.info(emp.toString());
     }
@@ -46,14 +46,14 @@ class MybatisSummarizeApplicationTests {
             emp.setDeptNo(1000 + i);
             beanList.add(emp);
         }
-        Integer insertLine = cudDao.insertListEmp(beanList);
+        int insertLine = cudDao.insertListEmp(beanList);
         logger.info("insert list data , line : " + insertLine);
         logger.info("list toString : " + beanList.toString());
     }
 
     @Test
     void deleteEmp() {
-        Integer delLine = cudDao.deleteEmp(2);
+        int delLine = cudDao.deleteEmp(2);
         logger.info("del line : " + delLine);
     }
 
@@ -65,7 +65,7 @@ class MybatisSummarizeApplicationTests {
         empBean.setAge(26);
         empBean.setIdCard("439019933990909183");
         empBean.setDeptNo(1002);
-        Integer updateLine = cudDao.updateEmp(empBean);
+        int updateLine = cudDao.updateEmp(empBean);
         logger.info("update line : " + updateLine);
     }
 
