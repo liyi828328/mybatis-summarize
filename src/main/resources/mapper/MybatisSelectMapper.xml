@@ -92,10 +92,12 @@
     </select>
 
     <!-- 二级缓存配置 -->
-    <cache
-            eviction="LRU"
-            flushInterval="60000"
-            size="512"
-            readOnly="false"
-    />
+<!--    <cache-->
+<!--            eviction="LRU"-->
+<!--            flushInterval="60000"-->
+<!--            size="512"-->
+<!--            readOnly="false"-->
+<!--    />-->
+    <!-- 引入三方ehcache -->
+    <cache  type="org.mybatis.caches.ehcache.EhcacheCache"/>
 </mapper>
