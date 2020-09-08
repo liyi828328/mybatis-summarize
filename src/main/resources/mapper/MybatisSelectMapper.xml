@@ -90,4 +90,12 @@
     <select id="selectEmpById" resultMap="emp_map_2">
         select * from emp where emp_id = #{empId}
     </select>
+
+    <!-- 二级缓存配置 -->
+    <cache
+            eviction="LRU"
+            flushInterval="60000"
+            size="512"
+            readOnly="false"
+    />
 </mapper>

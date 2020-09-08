@@ -1,5 +1,6 @@
 package perseverance.li.mybatis.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
  * 2020-09-03 11:28 : Create by LiYi
  * ---------------------------------------------------------------
  */
-public class DeptBean {
+public class DeptBean implements Serializable {
 
     private Integer deptId;
     private Integer deptNo;

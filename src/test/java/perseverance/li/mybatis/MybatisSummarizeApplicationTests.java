@@ -71,8 +71,17 @@ class MybatisSummarizeApplicationTests {
 
     @Test
     void selectAllEmp() {
+        //使用二级缓存查询
         List<EmpBean> beanList = selectDao.selectAllEmp();
         logger.info(beanList.toString());
+
+        logger.info("+++++++++++++++++++++++++++++++");
+        List<EmpBean> beanList2 = selectDao.selectAllEmp();
+        logger.info(beanList2.toString());
+
+        logger.info("+++++++++++++++++++++++++++++++");
+        List<EmpBean> beanList3 = selectDao.selectAllEmp();
+        logger.info(beanList3.toString());
     }
 
     @Test

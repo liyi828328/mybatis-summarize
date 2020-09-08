@@ -1,5 +1,7 @@
 package perseverance.li.mybatis.bean;
 
+import java.io.Serializable;
+
 /**
  * ---------------------------------------------------------------
  * Author: LiYi
@@ -13,7 +15,7 @@ package perseverance.li.mybatis.bean;
  * 2020-09-03 10:42 : Create by LiYi
  * ---------------------------------------------------------------
  */
-public class EmpBean {
+public class EmpBean implements Serializable {
 
     private Integer empId;
     private String name;

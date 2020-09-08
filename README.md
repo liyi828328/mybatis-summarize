@@ -50,6 +50,13 @@ readOnly（只读）属性可以被设置为 true 或 false。只读的缓存会
 
 #### 使用自定义缓存
 除了上述自定义缓存的方式，你也可以通过实现你自己的缓存，或为其他第三方缓存方案创建适配器，来完全覆盖缓存行为。
+
+```.xml
+第三方缓存：
+ehcache：http://mybatis.org/ehcache-cache/
+redis-cache：http://mybatis.org/redis-cache/
+``` 
+
 ```.xml
 <cache type="com.domain.something.MyCustomCache"/>
 ```
